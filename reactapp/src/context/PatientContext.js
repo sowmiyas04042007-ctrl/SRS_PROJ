@@ -1,24 +1,16 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useReducer } from "react";
+import { treatmentReducer } from "./TreatmentReducer";
 
 export const PatientContext = createContext();
 
 export const PatientProvider = ({ children }) => {
   const [patients, setPatients] = useState([]);
+  const [treatments, dispatch] = useReducer(treatmentReducer, []);
 
-  const addPatient = (patient) => {
-    setPatients([...patients, patient]);
-  };
-
-  const updateRoomStatus = (id, status) => {
-    setPatients(
-      patients.map((p) =>
-        p.id === id ? { ...p, roomStatus: status } : p
-      )
-    );
-  };
+  const addPatient = (patient) => setPatients([...patients, patient]);
 
   return (
-    <PatientContext.Provider value={{ patients, addPatient, updateRoomStatus }}>
+    <PatientContext.Provider value={{ patients, addPatient, treatments, dispatch }}>
       {children}
     </PatientContext.Provider>
   );

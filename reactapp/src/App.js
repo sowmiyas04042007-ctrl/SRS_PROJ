@@ -1,22 +1,29 @@
-import { Switch, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PatientList from "./components/PatientList";
-import AddPatient from "./components/AddPatient";
-import PatientDetails from "./components/PatientDetails";
-import RoomStatus from "./components/RoomStatus";
-import "./index.css";
-import "./App.css";
+import PatientProfile from "./components/PatientProfile";
+import TreatmentTimeline from "./components/TreatmentTimeline";
+import AppointmentScheduler from "./components/AppointmentScheduler";
+import DoctorDashboard from "./components/DoctorDashboard";
+import MedicalRecordViewer from "./components/MedicalRecordViewer";
+
 function App() {
   return (
-    <>
-      <Navbar />
+    <Router>
+      <nav>
+        <Link to="/">Patients</Link> |{" "}
+        <Link to="/appointments">Appointments</Link> |{" "}
+        <Link to="/doctor">Doctor</Link>
+      </nav>
+
       <Switch>
         <Route exact path="/" component={PatientList} />
-        <Route path="/add" component={AddPatient} />
-        <Route path="/patient/:id" component={PatientDetails} />
-        <Route path="/room/:id" component={RoomStatus} />
+        <Route path="/patient/:id" component={PatientProfile} />
+        <Route path="/timeline" component={TreatmentTimeline} />
+        <Route path="/appointments" component={AppointmentScheduler} />
+        <Route path="/doctor" component={DoctorDashboard} />
+        <Route path="/records" component={MedicalRecordViewer} />
       </Switch>
-    </>
+    </Router>
   );
 }
 
