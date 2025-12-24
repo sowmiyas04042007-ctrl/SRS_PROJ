@@ -7,7 +7,7 @@ function PatientList() {
 
   return (
     <>
-      {/* HERO SECTION */}
+    
       <div className="hero">
         <div className="hero-content">
           <h1>Hospital Management System</h1>
@@ -16,12 +16,12 @@ function PatientList() {
             efficiently using our modern system.
           </p>
           <Link to="/add">
-            <button>Add New Patient</button>
+      
           </Link>
         </div>
       </div>
 
-      {/* PATIENT LIST */}
+     
       <div className="container">
         <h2>Patients List</h2>
 
@@ -33,8 +33,8 @@ function PatientList() {
           </div>
         ))}
       </div>
-    </>
+   
+ </>
   );
 }
-
 export default PatientList;

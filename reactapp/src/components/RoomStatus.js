@@ -9,12 +9,11 @@ function RoomStatus() {
 
   const patient = patients.find((p) => p.id === Number(id));
 
-  // ✅ Hook is ALWAYS called (rule-safe)
+
   const [status, setStatus] = useState(
     patient ? patient.roomStatus : "Available"
   );
 
-  // ✅ Conditional return AFTER hooks
   if (!patient) {
     return <div>Patient not found</div>;
   }
@@ -25,7 +24,7 @@ function RoomStatus() {
 
   return (
     <div>
-      {/* Required for test */}
+
       <h3>{patient.name}</h3>
 
       <p>Room Status: {patient.roomStatus}</p>
