@@ -5,59 +5,52 @@ function Home() {
   return (
     <div className="home">
 
-      {/* HERO SECTION */}
-      <section className="hero">
+      {/* HEADER */}
+      <header className="header">
         <h1>Oncology Hospital Management System</h1>
         <p>
-          Advanced digital platform for cancer patient care, treatment tracking,
-          and coordinated oncology services.
+          Manage cancer patients, treatments, appointments, and medical records
+          in a simple and efficient way.
         </p>
+      </header>
 
-        <div className="hero-buttons">
-          <Link to="/" className="btn primary">View Patients</Link>
-          <Link to="/appointments" className="btn secondary">Schedule Appointment</Link>
-        </div>
+      {/* ACTION BUTTONS */}
+      <section className="actions">
+        <Link to="/patients" className="btn">Patient List</Link>
+        <Link to="/appointments" className="btn">Appointments</Link>
+        <Link to="/doctor" className="btn">Doctor Dashboard</Link>
       </section>
 
       {/* FEATURES */}
-      <section className="features">
-        <h2>Core Features</h2>
-        <div className="card-container">
-          <div className="card">Patient Management</div>
-          <div className="card">Treatment Tracking</div>
-          <div className="card">Appointment Scheduling</div>
-          <div className="card">Medical Records</div>
-          <div className="card">Doctor Dashboard</div>
-          <div className="card">Follow-Up Care</div>
+      <section className="section">
+        <h2>Key Features</h2>
+        <div className="box">
+          <ul>
+            <li>Patient Registration and Management</li>
+            <li>Treatment Plan Tracking</li>
+            <li>Appointment Scheduling</li>
+            <li>Medical Records Management</li>
+            <li>Follow-Up Care</li>
+          </ul>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section className="services">
+      <section className="section">
         <h2>Oncology Services</h2>
-        <ul>
-          <li>Chemotherapy</li>
-          <li>Radiation Therapy</li>
-          <li>Surgical Oncology</li>
-          <li>Immunotherapy</li>
-          <li>Post-Treatment Follow-Up</li>
-        </ul>
-      </section>
-
-      {/* QUICK DASHBOARD */}
-      <section className="dashboard">
-        <h2>Quick Access</h2>
-        <div className="dashboard-buttons">
-          <Link to="/doctor" className="btn">Doctor Dashboard</Link>
-          <Link to="/records" className="btn">Medical Records</Link>
-          <Link to="/timeline" className="btn">Treatment Timeline</Link>
+        <div className="box">
+          <ul>
+            <li>Chemotherapy</li>
+            <li>Radiation Therapy</li>
+            <li>Surgical Oncology</li>
+            <li>Immunotherapy</li>
+          </ul>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="footer">
         <p>© 2025 Oncology Hospital Management System</p>
-        <p>Secure • Reliable • Responsive</p>
       </footer>
 
     </div>
