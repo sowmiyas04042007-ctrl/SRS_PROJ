@@ -1,0 +1,58 @@
+/* Main form container */
+.add-patient-form {
+  width: 380px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Title */
+.add-patient-form h2 {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 10px;
+}
+
+/* Inputs */
+.add-patient-form input {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.add-patient-form input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+/* Button */
+.add-patient-form button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-patient-form button:hover {
+  background: #125aa3;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .add-patient-form {
+    width: 90%;
+    padding: 25px;
+  }
+}

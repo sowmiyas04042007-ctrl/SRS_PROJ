@@ -1,19 +1,24 @@
-import { createContext, useState, useReducer } from "react";
-import { treatmentReducer } from "./TreatmentReducer";
+import { createContext, useState } from "react";
 
 export const PatientContext = createContext();
 
 export const PatientProvider = ({ children }) => {
   const [patients, setPatients] = useState([]);
-  const [treatments, dispatch] = useReducer(treatmentReducer, []);
 
+  /* ADD PATIENT */
   const addPatient = (patient) => {
     setPatients([
       ...patients,
-      { ...patient, medicalRecords: [], treatmentHistory: [] }
+      {
+        ...patient,
+        medicalRecords: [],
+        treatmentHistory: [],
+        prescriptions: []        // ✅ NEW
+      }
     ]);
   };
 
+  /* ADD MEDICAL RECORD */
   const addMedicalRecord = (patientId, record) => {
     setPatients(
       patients.map(p =>
@@ -24,14 +29,44 @@ export const PatientProvider = ({ children }) => {
     );
   };
 
+  /* ADD TREATMENT (FIXES "NO TREATMENT ADDED") */
+  const addTreatmentToPatient = (patientId, treatment) => {
+    setPatients(
+      patients.map(p =>
+        p.id === patientId
+          ? {
+              ...p,
+              treatmentHistory: [...p.treatmentHistory, treatment]
+            }
+          : p
+      )
+    );
+  };
+
+  /* ADD PRESCRIPTION */
+  const addPrescription = (patientId, prescription) => {
+    setPatients(
+      patients.map(p =>
+        p.id === patientId
+          ? {
+              ...p,
+              prescriptions: [...p.prescriptions, prescription]
+            }
+          : p
+      )
+    );
+  };
+
   return (
-    <PatientContext.Provider value={{
-      patients,
-      addPatient,
-      addMedicalRecord,
-      treatments,
-      dispatch
-    }}>
+    <PatientContext.Provider
+      value={{
+        patients,
+        addPatient,
+        addMedicalRecord,
+        addTreatmentToPatient,
+        addPrescription
+      }}
+    >
       {children}
     </PatientContext.Provider>
   );

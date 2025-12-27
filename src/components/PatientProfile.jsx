@@ -11,39 +11,39 @@ function PatientProfile() {
   if (!patient) return <p>Patient not found</p>;
 
   return (
-<<<<<<< HEAD:src/components/PatientProfile.jsx
-    <div style={{ padding: "20px" }}>
-      <h2>{patient.name}</h2>
-      <p><strong>Diagnosis:</strong> {patient.diagnosis}</p>
-
-      <Link to={`/records/${patient.id}`}>Medical Records</Link>
-      <br />
-      <Link to="/timeline">Treatment Timeline</Link>
-=======
     <div className="profile-container">
       <h2>{patient.name}</h2>
 
-      <p><strong>Diagnosis:</strong> {patient.diagnosis}</p>
+      <p>
+        <strong>Diagnosis:</strong> {patient.diagnosis}
+      </p>
 
-      {/* ✅ TREATMENT PLAN MANAGEMENT */}
+      {/* TREATMENT PLAN */}
       <h3>Treatment Plan</h3>
-      <ul>
-        {patient.treatmentHistory && patient.treatmentHistory.map((t, index) => (
-          <li key={index}>{t}</li>
-        ))}
-      </ul>
+      {patient.treatmentHistory.length > 0 ? (
+        <ul>
+          {patient.treatmentHistory.map((t, i) => (
+            <li key={i}>{t}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No treatment added</p>
+      )}
 
-      {/* LINKS WITH PROPER GAP */}
+      {/* ACTION BUTTONS */}
       <div className="profile-links">
-        <Link to="/timeline" className="profile-btn">
+        <Link to={`/records/${patient.id}`} className="profile-btn">
+          Medical Records
+        </Link>
+
+        <Link to={`/timeline/${patient.id}`} className="profile-btn">
           Treatment Timeline
         </Link>
 
-        <Link to="/records" className="profile-btn">
-          Medical Records
+        <Link to={`/prescription/${patient.id}`} className="profile-btn">
+          Prescriptions
         </Link>
       </div>
->>>>>>> 703d74de3ebb1b6762a4e34a742a39d62bd34b8a:reactapp/src/components/PatientProfile.js
     </div>
   );
 }

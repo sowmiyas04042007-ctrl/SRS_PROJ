@@ -5,8 +5,11 @@ import AddPatient from "./components/AddPatient";
 import PatientProfile from "./components/PatientProfile";
 import Appointment from "./components/Appointment";
 import DoctorDashboard from "./components/DoctorDashboard";
+import Doctor from "./components/Doctor";
 import MedicalRecordViewer from "./components/MedicalRecordViewer";
 import TreatmentTimeline from "./components/TreatmentTimeline";
+import Prescription from "./components/Prescription";
+import Report from "./components/Report";
 
 
 function App() {
@@ -17,6 +20,9 @@ function App() {
         <Link to="/patients" style={linkStyle}>Patients</Link>
         <Link to="/appointments" style={linkStyle}>Appointments</Link>
         <Link to="/doctor" style={linkStyle}>Doctors</Link>
+        <Link to="/reports" style={linkStyle}>Reports</Link>
+
+
       </nav>
 
       <Routes>
@@ -24,10 +30,17 @@ function App() {
         <Route path="/patients" element={<PatientList />} />
         <Route path="/add" element={<AddPatient />} />
         <Route path="/patient/:id" element={<PatientProfile />} />
-        <Route path="/appointments" element={<Appointment />} />
-        <Route path="/doctor" element={<DoctorDashboard />} />
+
+        {/* ✅ FIXED ROUTES */}
         <Route path="/records/:id" element={<MedicalRecordViewer />} />
-        <Route path="/timeline" element={<TreatmentTimeline />} />
+        <Route path="/timeline/:id" element={<TreatmentTimeline />} />
+        <Route path="/prescription/:id" element={<Prescription />} />
+
+        <Route path="/appointments" element={<Appointment />} />
+        <Route path="/doctor" element={<Doctor />} />
+        <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+        
+        <Route path="/reports" element={<Report />} />
       </Routes>
     </BrowserRouter>
   );

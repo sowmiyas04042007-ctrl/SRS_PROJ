@@ -1,13 +1,21 @@
 import { useContext, useState } from "react";
 import { PatientContext } from "../context/PatientContext";
+import { useParams } from "react-router-dom";
 
 function TreatmentTimeline() {
-  const { treatments, dispatch } = useContext(PatientContext);
+  const { id } = useParams();
+  const { addTreatmentToPatient } = useContext(PatientContext);
   const [type, setType] = useState("");
+
+  const addTreatment = () => {
+    if (!type) return;
+    addTreatmentToPatient(Number(id), type);
+    setType("");
+  };
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>Treatment Timeline</h2>
+      <h2>Add Treatment</h2>
 
       <input
         placeholder="Chemotherapy / Radiation"
@@ -15,13 +23,7 @@ function TreatmentTimeline() {
         onChange={e => setType(e.target.value)}
       />
 
-      <button onClick={() => dispatch({ type: "ADD_TREATMENT", payload: type })}>
-        Add
-      </button>
-
-      <ul>
-        {treatments.map((t, i) => <li key={i}>{t}</li>)}
-      </ul>
+      <button onClick={addTreatment}>Add Treatment</button>
     </div>
   );
 }
